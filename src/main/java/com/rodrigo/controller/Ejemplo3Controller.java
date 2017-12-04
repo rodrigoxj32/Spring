@@ -43,6 +43,8 @@ public class Ejemplo3Controller {
 		
 		model.addAttribute("persona",new Persona()); 
 		
+		int p = 6/0;
+		
 		return formulario1;
 		
 	}

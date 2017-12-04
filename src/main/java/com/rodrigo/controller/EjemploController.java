@@ -61,7 +61,6 @@ public class EjemploController {
 	
 	
 	
-	
 	private List<Persona> getPersonas(){
 		List<Persona> personas = new ArrayList<>();
 		
