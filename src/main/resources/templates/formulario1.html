@@ -10,12 +10,14 @@
 	    <div>
 	        <label>Nombre:</label>
 	        <input type="text" id="nombre" th:field="*{nombre}"/>
+	        <p th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"> Nombre errores</p>
 	    </div>
 	    <br></br>
 	    
 	    <div>
 	        <label>Edad:</label>
 	        <input type="number" id="edad" th:field="*{edad}"/>
+	        <p th:if="${#fields.hasErrors('edad')}" th:errors="*{edad}"> edad errores</p>
 	    </div>
 	    <br></br>
 	    
