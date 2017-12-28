@@ -1,5 +1,7 @@
 package com.rodrigo.controller;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -20,13 +22,19 @@ public class CursoController {
 	private static final String ListaCursos = "listaCursos";
 	private static final String AgregarCurso = "agregarCurso";
 	
+	private static final Log LOG = LogFactory.getLog(CursoController.class);
+	
 	@Autowired
 	@Qualifier("cursoServiceImpl")
 	private CursoService cursoService;
 	
 	@GetMapping("/listaCursos")
 	public ModelAndView listarTodosLosCursos() {
+		LOG.info("Llamada: listarTodosLosCursos()");
+		
 		ModelAndView mav = new ModelAndView(ListaCursos);
+		
+		//System.out.println(cursoService.obtenerTodosLosCursos());
 		
 		mav.addObject("cursos",cursoService.obtenerTodosLosCursos());
 		
@@ -36,6 +44,7 @@ public class CursoController {
 	
 	@PostMapping("/agregarCurso")
 	public String agregarCurso(@ModelAttribute("curso") Curso curso) {
+		LOG.info("Llamada: agregarCurso( " + curso.toString() + " )");
 		
 		cursoService.agregarCurso(curso);
 				

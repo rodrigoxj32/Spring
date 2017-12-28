@@ -2,6 +2,8 @@ package com.rodrigo.service.impl;
 
 import java.util.List;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -12,6 +14,8 @@ import com.rodrigo.service.CursoService;
 
 @Service("cursoServiceImpl")
 public class CursoServiceImpl implements CursoService{
+	
+	private static final Log LOG = LogFactory.getLog(CursoServiceImpl.class);
 
 	@Autowired
 	@Qualifier("cursoJpaRepository")
@@ -19,6 +23,7 @@ public class CursoServiceImpl implements CursoService{
 	
 	@Override
 	public List<Curso> obtenerTodosLosCursos() {
+		LOG.info("Llamada: obtenerTodosLosCursos()");
 		
 		return cursoJpaRepository.findAll();
 		
@@ -27,6 +32,7 @@ public class CursoServiceImpl implements CursoService{
 
 	@Override
 	public Curso agregarCurso(Curso curso) {
+		LOG.info("Llamada: agregarCurso()");
 		
 		return cursoJpaRepository.save(curso);
 		
