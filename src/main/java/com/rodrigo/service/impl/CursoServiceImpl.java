@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import com.rodrigo.converter.CursoConverter;
 import com.rodrigo.entity.Curso;
+import com.rodrigo.model.CursoModel;
 import com.rodrigo.repository.CursoJpaRepository;
 import com.rodrigo.service.CursoService;
 
@@ -21,6 +23,10 @@ public class CursoServiceImpl implements CursoService{
 	@Qualifier("cursoJpaRepository")
 	private CursoJpaRepository cursoJpaRepository;
 	
+	@Autowired
+	@Qualifier("cursoConverter")
+	private CursoConverter cursoConverter;
+	
 	@Override
 	public List<Curso> obtenerTodosLosCursos() {
 		LOG.info("Llamada: obtenerTodosLosCursos()");
@@ -31,10 +37,11 @@ public class CursoServiceImpl implements CursoService{
 	}
 
 	@Override
-	public Curso agregarCurso(Curso curso) {
+	public Curso agregarCurso(CursoModel curso) {
 		LOG.info("Llamada: agregarCurso()");
 		
-		return cursoJpaRepository.save(curso);
+		
+		return cursoJpaRepository.save(cursoConverter.modelAentity(curso));
 		
 	}
 
