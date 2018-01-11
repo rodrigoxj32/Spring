@@ -36,6 +36,7 @@ public class CursoController {
 		
 		//System.out.println(cursoService.obtenerTodosLosCursos());
 		
+		mav.addObject("curso",new Curso());
 		mav.addObject("cursos",cursoService.obtenerTodosLosCursos());
 		
 		return mav;		

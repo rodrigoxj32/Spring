@@ -32,6 +32,15 @@
 		</tbody>
 		
 	</table>
+	
+	<form action="#" th:action="@{/cursos/agregarCurso}" th:object="${curso}" method="post">
+		<p>Nombre: <input type="text" th:field="*{nombre}" /> </p>
+		<p>Descripcion: <input type="text" th:field="*{descripcion}" /> </p>
+		<p>Precio: <input type="number" th:field="*{precio}" /> </p>
+		<p>Horas: <input type="number" th:field="*{horas}" /> </p>
+		
+		<p><input type="submit" value="Submit"  /> </p>
+	</form>
 
 </body>
 </html>
