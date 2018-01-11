@@ -29,7 +29,7 @@ import com.rodrigo.service.CursoService;
 public class CursoController {
 	
 	private static final String ListaCursos = "listaCursos";
-	//private static final String AgregarCurso = "agregarCurso";
+	private static final String EditarCurso = "editarCurso";
 	
 	private static final Log LOG = LogFactory.getLog(CursoController.class);
 	
@@ -76,12 +76,28 @@ public class CursoController {
 	
 	
 		
-	@PutMapping("/actualizarCurso")
-	public String actualizarCurso() {
+	@GetMapping("/editarCurso")
+	public ModelAndView editarCurso(@RequestParam(value="id", required=false) String id) {
+		LOG.info("Llamada: editarCurso( " +id +" )");
 		
+		ModelAndView mav = new ModelAndView(EditarCurso);
 		
+		//addObject("curso2",new Curso());
+		mav.addObject("curso",cursoService.buscarCurso(Integer.parseInt(id)));
+		
+		System.out.println(cursoService.buscarCurso(Integer.parseInt(id)));
+		
+		return mav;		
+	}
+	
+	
+	@PostMapping("/actualizarCurso")
+	public String actualizarCurso(@ModelAttribute("curso") Curso curso) {
+		LOG.info("Llamada: actualizarCurso( " + curso.toString() + " )");
+		
+		cursoService.modificarCurso(curso);
+				
 		return "redirect:/cursos/listaCursos";
-		
 	}
 	
 	

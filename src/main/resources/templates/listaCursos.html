@@ -42,7 +42,8 @@
 					<td> <span th:text="${curso.horas}"> </span> </td>
 					<!--<td><button type="button" class="btn btn-warning">Modificar</button> </td>-->
 					<td>
-					<a th:href="@{/cursos/borrarCurso(id=${curso.id})}" class="btn btn-danger">Eliminar</a>
+					<a th:href="@{/cursos/borrarCurso(id=${curso.id})}" onclick="return confirm('¿Deseas Eliminar este curso?')" class="btn btn-danger">Eliminar</a>
+					<a th:href="@{/cursos/editarCurso(id=${curso.id})}" onclick="return confirm('¿Deseas Modificar este curso?')" class="btn btn-warning">Editar</a>
 					</td>	
 				</tr>
 			</tbody>

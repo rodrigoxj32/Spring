@@ -61,6 +61,13 @@ public class CursoServiceImpl implements CursoService{
 		
 	}
 	
+	@Override
+	public Curso buscarCurso(int id) {
+		
+		return cursoJpaRepository.findById(id);
+				
+	}
+	
 	
 
 }

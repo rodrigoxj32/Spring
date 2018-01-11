@@ -15,6 +15,6 @@ public interface CursoService {
 	
 	public abstract Curso modificarCurso(Curso curso);
 	
-	
+	public abstract Curso buscarCurso(int id);
 	
 }
